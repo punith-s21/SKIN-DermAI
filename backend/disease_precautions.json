@@ -1,0 +1,219 @@
+{
+  "nv": {
+    "name": "Melanocytic Nevus",
+    "explanation": "A common type of benign skin lesion composed of melanocytes (pigment cells). These are typically harmless moles or birthmarks.",
+    "general_precautions": [
+      "Monitor existing moles for changes in size, shape, or color",
+      "Protect from excessive sun exposure with sunscreen (SPF 30+)",
+      "Wear protective clothing and seek shade when outdoors",
+      "Avoid tanning beds and artificial UV exposure"
+    ],
+    "skin_care": [
+      "Keep the area clean and dry",
+      "Avoid scratching or irritating the mole",
+      "Use gentle, fragrance-free skincare products",
+      "Moisturize regularly to maintain skin health"
+    ],
+    "avoid": [
+      "Picking, scratching, or attempting to remove the mole yourself",
+      "Excessive sun exposure without protection",
+      "Using harsh chemicals or irritants on the area",
+      "Self-examination tools that could damage the skin"
+    ],
+    "warning_signs": [
+      "Rapid growth in size",
+      "Change in color (especially darkening or multiple colors)",
+      "Irregular or asymmetrical borders",
+      "Itching, bleeding, or crusting",
+      "New symptoms such as pain or tenderness"
+    ],
+    "urgency": "routine",
+    "urgency_text": "Routine monitoring is sufficient. If any warning signs appear, schedule a dermatologist appointment within 2-4 weeks."
+  },
+  "mel": {
+    "name": "Melanoma",
+    "explanation": "A serious form of skin cancer that develops from pigment-producing cells (melanocytes). It can spread to other parts of the body if not detected early.",
+    "general_precautions": [
+      "Perform regular skin self-examinations monthly",
+      "Protect from sun exposure with broad-spectrum sunscreen SPF 30+",
+      "Avoid tanning beds completely",
+      "Wear sun-protective clothing when outdoors"
+    ],
+    "skin_care": [
+      "Keep the area clean and dry",
+      "Do not apply harsh chemicals or irritants",
+      "Use gentle, fragrance-free products",
+      "Protect from further sun exposure until evaluated"
+    ],
+    "avoid": [
+      "Delaying medical evaluation",
+      "Attempting self-diagnosis or home remedies",
+      "Ignoring changes in the lesion",
+      "Using over-the-counter treatments without medical advice"
+    ],
+    "warning_signs": [
+      "ABCDE signs: Asymmetry, Border irregularity, Color variation, Diameter >6mm, Evolving changes",
+      "Bleeding, oozing, or crusting",
+      "Itching, pain, or tenderness",
+      "Darkening or spreading of pigmentation",
+      "New satellite lesions nearby"
+    ],
+    "urgency": "urgent",
+    "urgency_text": "Seek immediate medical evaluation. Melanoma requires prompt diagnosis and treatment. Schedule a dermatologist appointment within 48 hours or visit urgent care if rapidly changing."
+  },
+  "bcc": {
+    "name": "Basal Cell Carcinoma",
+    "explanation": "The most common type of skin cancer, typically appearing as a pearly bump or pinkish growth. It rarely spreads but can cause local tissue damage if untreated.",
+    "general_precautions": [
+      "Protect from sun exposure with sunscreen SPF 30+",
+      "Wear protective clothing and seek shade",
+      "Avoid tanning beds",
+      "Regular skin examinations, especially if you have fair skin"
+    ],
+    "skin_care": [
+      "Keep the area clean and dry",
+      "Avoid scratching or irritating the lesion",
+      "Use gentle skincare products",
+      "Do not apply cosmetics or makeup to the area until evaluated"
+    ],
+    "avoid": [
+      "Attempting to remove or treat the lesion yourself",
+      "Ignoring persistent sores that don't heal",
+      "Applying home remedies or alternative medicines",
+      "Delaying medical evaluation"
+    ],
+    "warning_signs": [
+      "Pearly or waxy appearance",
+      "Visible blood vessels within the lesion",
+      "Bleeding, oozing, or crusting",
+      "Failure to heal after injury",
+      "Slow growth over months or years"
+    ],
+    "urgency": "prompt",
+    "urgency_text": "Schedule a dermatologist appointment within 1-2 weeks. While not immediately life-threatening, basal cell carcinoma should be evaluated and treated to prevent tissue damage."
+  },
+  "akiec": {
+    "name": "Actinic Keratosis",
+    "explanation": "A rough, scaly patch caused by years of sun exposure. It is considered a precancerous lesion that may develop into squamous cell carcinoma if left untreated.",
+    "general_precautions": [
+      "Strict sun protection with sunscreen SPF 30+",
+      "Wear wide-brimmed hats and protective clothing",
+      "Avoid peak sun hours (10 AM - 4 PM)",
+      "Use lip balm with SPF protection"
+    ],
+    "skin_care": [
+      "Keep the area moisturized",
+      "Use gentle exfoliation only if recommended by dermatologist",
+      "Apply moisturizing creams to reduce roughness",
+      "Avoid harsh scrubs or peels"
+    ],
+    "avoid": [
+      "Picking or scratching off scales",
+      "Using harsh chemical peels without medical supervision",
+      "Continuing unprotected sun exposure",
+      "Self-treatment with over-the-counter wart removers"
+    ],
+    "warning_signs": [
+      "Increasing thickness or roughness",
+      "Tenderness or pain",
+      "Bleeding or crusting",
+      "Development of a lump or nodule",
+      "Rapid growth or spread"
+    ],
+    "urgency": "prompt",
+    "urgency_text": "Schedule a dermatologist appointment within 1-2 weeks. Actinic keratosis can be treated easily in early stages but may progress to cancer if left untreated."
+  },
+  "bkl": {
+    "name": "Benign Keratosis-like Lesions",
+    "explanation": "Includes seborrheic keratoses, solar lentigines, and other benign growths. These are non-cancerous but should be monitored for changes.",
+    "general_precautions": [
+      "Sun protection with sunscreen SPF 30+",
+      "Regular skin examinations",
+      "Avoid picking or scratching lesions",
+      "Monitor for any changes in appearance"
+    ],
+    "skin_care": [
+      "Keep the area clean and dry",
+      "Use gentle moisturizers",
+      "Avoid harsh chemicals or irritants",
+      "Do not attempt to remove the lesion yourself"
+    ],
+    "avoid": [
+      "Picking, scratching, or trying to scrape off the lesion",
+      "Using over-the-counter wart or mole removers",
+      "Applying acids or harsh chemicals",
+      "Self-removal tools or home remedies"
+    ],
+    "warning_signs": [
+      "Rapid growth or increase in size",
+      "Color changes (especially darkening)",
+      "Bleeding, oozing, or persistent irritation",
+      "Development of irregular borders",
+      "New symptoms such as pain or itching"
+    ],
+    "urgency": "routine",
+    "urgency_text": "Routine monitoring is generally sufficient. However, if the lesion changes or causes concern, schedule a dermatologist appointment within 2-4 weeks for evaluation."
+  },
+  "df": {
+    "name": "Dermatofibroma",
+    "explanation": "A benign firm nodule that often appears on the legs. It consists of fibrous tissue and is typically harmless, but can be mistaken for other skin conditions.",
+    "general_precautions": [
+      "Monitor for any changes in size or appearance",
+      "Protect from trauma or injury to the area",
+      "Maintain regular skin examinations",
+      "Document the lesion with photos for comparison"
+    ],
+    "skin_care": [
+      "Keep the area clean and dry",
+      "Use gentle skincare products",
+      "Avoid applying harsh chemicals or irritants",
+      "Do not attempt to manipulate or compress the lesion"
+    ],
+    "avoid": [
+      "Attempting to remove or excise the lesion yourself",
+      "Repeatedly touching or manipulating the area",
+      "Applying creams or treatments without medical advice",
+      "Ignoring rapid changes in the lesion"
+    ],
+    "warning_signs": [
+      "Rapid increase in size",
+      "Change in texture or firmness",
+      "Development of pain or tenderness",
+      "Color changes or darkening",
+      "Development of new symptoms in surrounding skin"
+    ],
+    "urgency": "routine",
+    "urgency_text": "Routine monitoring is generally appropriate. If the lesion changes or causes concern, schedule a dermatologist appointment within 2-4 weeks for evaluation."
+  },
+  "vasc": {
+    "name": "Vascular Lesions",
+    "explanation": "Abnormal growths formed from blood vessels. These include cherry angiomas, spider angiomas, and other vascular malformations. Most are benign but should be evaluated.",
+    "general_precautions": [
+      "Protect from trauma or injury to the area",
+      "Avoid scratching or picking at the lesion",
+      "Monitor for bleeding or rapid growth",
+      "Maintain regular skin examinations"
+    ],
+    "skin_care": [
+      "Keep the area clean and dry",
+      "Apply gentle pressure if bleeding occurs",
+      "Use soft, non-irritating bandages if needed",
+      "Avoid harsh chemicals or irritants"
+    ],
+    "avoid": [
+      "Picking, scratching, or traumatizing the lesion",
+      "Attempting to remove or cauterize the lesion yourself",
+      "Using scissors, razors, or home removal tools",
+      "Applying creams or treatments without medical advice"
+    ],
+    "warning_signs": [
+      "Frequent bleeding or oozing",
+      "Rapid growth or spreading",
+      "Change in color or texture",
+      "Development of pain or tenderness",
+      "Ulceration or breakdown of the overlying skin"
+    ],
+    "urgency": "prompt",
+    "urgency_text": "Schedule a dermatologist appointment within 1-2 weeks. While many vascular lesions are benign, persistent bleeding or changes should be evaluated to rule out other conditions."
+  }
+}

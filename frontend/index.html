@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DermAI - Skin Lesion Classification</title>
+    <link rel="stylesheet" href="styles.css?v=2">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>DermAI</h1>
+            <p>Skin Lesion Classification System</p>
+        </header>
+
+        <main>
+            <div class="upload-section">
+                <div class="validation-notice">
+                    <strong>ⓘ Image Validation:</strong> This system validates file type, size, and resolution. It does not detect whether an image contains skin. Please upload only skin lesion images for meaningful results.
+                </div>
+                <div class="upload-area" id="uploadArea">
+                    <input type="file" id="imageInput" accept="image/*" hidden>
+                    <div class="upload-icon">📷</div>
+                    <p>Click or drag & drop an image here</p>
+                    <p class="upload-hint">Supports: JPG, PNG, JPEG (Max 10MB, 100-4000px)</p>
+                </div>
+
+                <div class="preview-section" id="previewSection" style="display: none;">
+                    <img id="imagePreview" alt="Preview">
+                    <button id="clearBtn" class="btn btn-secondary">Clear</button>
+                    <button id="predictBtn" class="btn btn-primary">Analyze</button>
+                </div>
+            </div>
+
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <h2>Analysis Results</h2>
+                
+                <div class="warning-box" id="lowConfidenceWarning" style="display: none;">
+                    <div class="warning-icon">⚠️</div>
+                    <div class="warning-content">
+                        <h4>Low Confidence Prediction</h4>
+                        <p>The model's confidence in this prediction is below 50%. This suggests the image may be unclear, atypical, or not well-represented in the training data. Please consult a dermatologist for proper evaluation.</p>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-header">
+                        <span class="result-label">Predicted Class:</span>
+                        <div class="result-value-group">
+                            <span class="result-value" id="predictedClass">-</span>
+                            <span class="result-value-full" id="predictedClassFull">-</span>
+                        </div>
+                    </div>
+                    <div class="result-header">
+                        <span class="result-label">Confidence:</span>
+                        <span class="result-value" id="confidence">-</span>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h4>Understanding Confidence Scores</h4>
+                    <p>The confidence score represents the model's estimated probability based on its training data. This is <strong>not</strong> a confirmed diagnostic accuracy. High confidence does not guarantee correct classification, and low confidence may indicate unclear or atypical presentations. Always seek professional medical advice.</p>
+                </div>
+
+                <div class="probabilities">
+                    <h3>All Class Probabilities</h3>
+                    <div id="probabilitiesList"></div>
+                </div>
+
+                <div class="precautions-section" id="precautionsSection" style="display: none;">
+                    <h3>Precautions & Recommendations</h3>
+                    <div class="precautions-warning" id="precautionsDisclaimer">
+                        <strong>⚠️ Important:</strong> These recommendations are educational only. This is an AI prediction, not a confirmed diagnosis. Always consult a dermatologist for proper medical evaluation.
+                    </div>
+                    <div class="precautions-content" id="precautionsContent">
+                        <div class="disease-info">
+                            <h4 id="diseaseName">-</h4>
+                            <p id="diseaseExplanation">-</p>
+                        </div>
+                        <div class="precautions-list">
+                            <div class="precaution-item">
+                                <span class="precaution-icon">🛡️</span>
+                                <div class="precaution-content">
+                                    <h5>General Precautions</h5>
+                                    <ul id="generalPrecautions"></ul>
+                                </div>
+                            </div>
+                            <div class="precaution-item">
+                                <span class="precaution-icon">🧴</span>
+                                <div class="precaution-content">
+                                    <h5>Skin Care</h5>
+                                    <ul id="skinCare"></ul>
+                                </div>
+                            </div>
+                            <div class="precaution-item">
+                                <span class="precaution-icon">🚫</span>
+                                <div class="precaution-content">
+                                    <h5>Avoid</h5>
+                                    <ul id="avoidList"></ul>
+                                </div>
+                            </div>
+                            <div class="precaution-item">
+                                <span class="precaution-icon">⚠️</span>
+                                <div class="precaution-content">
+                                    <h5>Warning Signs</h5>
+                                    <ul id="warningSigns"></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="urgency-card" id="urgencyCard">
+                            <div class="urgency-icon" id="urgencyIcon">⏰</div>
+                            <div class="urgency-content">
+                                <h5>Medical Evaluation Urgency</h5>
+                                <p id="urgencyText">-</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-section">
+                    <h3>Analysis Report</h3>
+                    <div class="report-actions">
+                        <button id="downloadReportBtn" class="btn btn-primary">Download PDF Report</button>
+                    </div>
+                    <div id="reportContent" class="report-content">
+                        <div class="report-header">
+                            <h2>DermAI Analysis Report</h2>
+                            <p class="report-date" id="reportDate"></p>
+                        </div>
+                        <div class="report-image-section">
+                            <h4>Uploaded Image</h4>
+                            <img id="reportImage" alt="Analysis Image">
+                        </div>
+                        <div class="report-prediction-section">
+                            <h4>Prediction Results</h4>
+                            <div class="report-prediction-item">
+                                <span class="report-label">Predicted Class:</span>
+                                <span class="report-value" id="reportPredictedClass">-</span>
+                            </div>
+                            <div class="report-prediction-item">
+                                <span class="report-label">Full Label:</span>
+                                <span class="report-value" id="reportPredictedClassFull">-</span>
+                            </div>
+                            <div class="report-prediction-item">
+                                <span class="report-label">Confidence Score:</span>
+                                <span class="report-value" id="reportConfidence">-</span>
+                            </div>
+                        </div>
+                        <div class="report-chart-section">
+                            <h4>Probability Distribution</h4>
+                            <canvas id="probabilityChart"></canvas>
+                        </div>
+                        <div class="report-probabilities-section">
+                            <h4>All Class Probabilities</h4>
+                            <table id="reportProbabilitiesTable">
+                                <thead>
+                                    <tr>
+                                        <th>Class</th>
+                                        <th>Full Name</th>
+                                        <th>Probability</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="reportProbabilitiesBody">
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="report-disclaimer">
+                            <h4>⚠️ Important Disclaimer</h4>
+                            <p><strong>This analysis result is experimental and educational only.</strong></p>
+                            <p>The prediction provided by this AI model is <strong>NOT a confirmed medical diagnosis</strong> and should never be used as a substitute for professional medical advice, diagnosis, or treatment.</p>
+                            <p>Skin lesions can appear similar across different conditions. Only a qualified dermatologist can properly evaluate skin conditions through comprehensive examination, including medical history, physical examination, and when necessary, biopsy or other diagnostic tests.</p>
+                            <p>If you have concerns about any skin lesion, mole, or abnormality, <strong>please consult a licensed dermatologist or healthcare provider immediately</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="loading" id="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>Analyzing image...</p>
+            </div>
+        </main>
+
+        <footer>
+            <div class="disclaimer-box">
+                <h3>⚠️ Important Medical Disclaimer</h3>
+                <p><strong>This application is for educational and research purposes only.</strong></p>
+                <p>The predictions provided by this AI model are <strong>not medical diagnoses</strong> and should never be used as a substitute for professional medical advice, diagnosis, or treatment.</p>
+                <p>Skin lesions can appear similar across different conditions, and visual inspection alone is insufficient for accurate diagnosis. Only a qualified dermatologist can properly evaluate skin conditions through comprehensive examination, including medical history, physical examination, and when necessary, biopsy or other diagnostic tests.</p>
+                <p>If you have concerns about any skin lesion, mole, or abnormality, <strong>please consult a licensed dermatologist or healthcare provider immediately</strong>.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
